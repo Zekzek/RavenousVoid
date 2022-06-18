@@ -27,10 +27,10 @@ public class RotatingMover : MonoBehaviour
             float vertical = GetAxisWithDeadZone("Vertical", 0.05f) * speed;
             float horizontal = GetAxisWithDeadZone("Horizontal", 0.05f) * rotationSpeed;
 
-            if (!Util.CloseEnough(horizontal, 0))
+            if (Mathf.Abs(horizontal) > 0.01f)
                 rigidbody.AddRelativeTorque(new Vector3(0, horizontal, 0), ForceMode.Acceleration);
 
-            if (!Util.CloseEnough(vertical, 0))
+            if (Mathf.Abs(vertical) > 0.01f)
                 rigidbody.AddRelativeForce(new Vector3(0, 0, vertical), ForceMode.Acceleration);
         }
     }

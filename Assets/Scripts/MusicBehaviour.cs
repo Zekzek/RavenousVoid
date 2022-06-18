@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zekzek.JsonContent;
 
 [RequireComponent(typeof(AudioSource))]
 public class MusicBehaviour : MonoBehaviour
@@ -36,7 +37,7 @@ public class MusicBehaviour : MonoBehaviour
     private void Start()
     {
         source = GetComponent<AudioSource>();
-        song = Util.GetSongData(songID);
+        song = ContentUtil.LoadData<SongData>(songID);
         song.Init();
         chords = song.Chords;
     }
